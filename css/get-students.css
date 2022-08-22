@@ -1,0 +1,68 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(245, 243, 242);
+}
+
+h1 {
+    align-items: center;
+    text-align: center;
+}
+
+#studentsinfo {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+
+}
+
+#register {
+    margin: 20px;
+    font-size: 40px;
+    font-weight: bolder;
+    align-items: center;
+    margin-left: 35%;
+}
+
+#fname {
+    width: 240px;
+    height: 25px;
+}
+
+#lname {
+    width: 250px;
+    height: 25px;
+}
+
+#gender {
+    width: 305px;
+    height: 25px;
+}
+
+#email {
+    width: 330px;
+    height: 25px;
+}
+
+#grade {
+    width: 350px;
+    height: 25px;
+}
+
+#submit {
+    width: 20em;
+    height: 40px;
+    color: brown;
+    cursor: pointer;
+}
+
+#id {
+    width: 20em;
+    height: 20px;
+    color: brown;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: yellow;
+}
