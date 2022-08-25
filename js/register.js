@@ -1,5 +1,4 @@
 
-
 function addStudent() {
     let firstName = document.getElementById("fname").value
     let lastName = document.getElementById("lname").value;
@@ -15,30 +14,54 @@ function addStudent() {
     let text4 = document.getElementById("text4");
     let text5 = document.getElementById("text5");
 
-    if (firstName === "" || null || firstName.trim().length === 0) {
+    const student = {
+        firstName: firstName,
+        lastName: lastName,
+        gender: gender,
+        email: email,
+        grade: grade,
+    }
+
+    function validate(StudentInformation) {
+        if (null || StudentInformation.trim().length === 0) {
+            return true;
+        }
+        else return false
+
+    }
+
+    //Email validation
+    function validateEmail() {
+        const mail = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/;
+
+        if (mail.test(email)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    if (validate(firstName)) {
         text1.style.color = "red";
         text1.innerHTML = "First name is required";
-    } else if (lastName === "" || null || lastName.trim().length <= 2) {
+    }
+    else if (validate(lastName)) {
         text2.style.color = "red";
         text2.innerHTML = "Last name box can not be empty";
-    } else if (null || gender.trim().length === 0) {
+    }
+    else if (validate(gender)) {
         text3.style.color = "red";
         text3.innerHTML = "Gender is required";
-    } else if (email === '' || null || email.trim().length === 0) {
+    }
+    else if (!validateEmail()) {
         text4.style.color = "red";
-        text4.innerHTML = "your email is required";
-
-    } else if (grade === '' || null || grade.trim().length === 0) {
+        text4.innerHTML = "Invalid email or no email provided";
+    }
+    else if (validate(grade)) {
         text5.style.color = "red";
         text5.innerHTML = "class is required";
-    } else {
-        const student = {
-            firstName: firstName,
-            lastName: lastName,
-            gender: gender,
-            email: email,
-            grade: grade,
-        }
+    }
+    else {
         fetch('http://localhost:8000/students', {
             method: 'POST',
             headers: {
@@ -50,7 +73,7 @@ function addStudent() {
             .then(response => response.text())
             .then(json => {
                 const result = document.getElementById("result");
-                result.innerHTML = `Student Added 🤗🤣😁`
+                result.innerHTML = json;
             })
             .catch(err => console.log(err));
     }
@@ -113,16 +136,11 @@ const removeStudent = () => {
             "content-type": "application/json"
         }
     })
-        .then(res => {
-            if (res) {
-                res.send("deleting data successfully")
-            } else {
-                console.log("deletindg data unsuccessfully")
-            }
-            return res
+        .then(response => response.text())
+        .then(data => {
+            const result2 = document.getElementById("result2");
+            result2.innerHTML = data;
         })
-        .then(res => res.text())
-        .then(data => console.log(data))
         .catch(error => console.log(error))
 }
 

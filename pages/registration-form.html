@@ -11,14 +11,15 @@
 
 <body onload="displayStudents()">
     <h1>STUDENT REGISTRATION FORM</h1>
+
     <div id="register">
         <div action="#" name="students" id="form">
             <span id="text1"></span><br />
             <label for="fName" name="fname">First name :</label>
-            <input type="text" id="fname"></br></br>
+            <input type="text" id="fname" placeholder="First name"></br></br>
             <span id="text2"></span><br />
             <label for="lname">Last name :</label>
-            <input type="text" id="lname"></br></br>
+            <input type="text" id="lname" placeholder="last name"></br></br>
             <span id="text3"></span><br />
             <label for="gender">Gender :</label>
             <select name="gender" id="gender">
@@ -30,7 +31,7 @@
             </br></br>
             <span id="text4"></span><br />
             <label for="email">Email :</label>
-            <input type="email" id="email"></br></br>
+            <input type="email" id="email" placeholder="example@gmail.com"></br></br>
             <span id="text5"></span><br />
             <label for="grade">class :</label>
             <select name="grade" id="grade">
@@ -48,10 +49,11 @@
         </div>
         <div id="button">
             <div id="buttons">
+                <p id="result" style="color: rgb(255, 98, 0); font-size: large;"></p>
                 <button id="submit" onclick="return addStudent()">Submit</button>
-                <p id="result"></p>
             </div>
             <div>
+                <p id="result2" style="color: rgb(255, 98, 0); font-size: large;"></p>
                 <button id="submit" onclick="return  removeStudent()">Delete students</button>
             </div>
             <!-- <div>
